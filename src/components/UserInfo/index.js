@@ -11,7 +11,7 @@ import {
 	setToken,
 	setSmsCodeRandom,
 	resetSmsCode
-} from '../screens/UserScreen/UserSlice';
+} from '../../screens/UserScreen/UserSlice';
 
 export const UserInfo = () => {
 	const dispatch = useDispatch();

@@ -1,9 +1,9 @@
 import React from 'react';
-import { getProducts, getCategories } from '../screens/CatalogScreen/CatalogSlice';
+import { getProducts, getCategories } from '../../screens/CatalogScreen/CatalogSlice';
 import { useDispatch } from 'react-redux';
-import { Navigator } from '../components/Navigator';
-import { useCheckToken } from './useCheckToken';
-import { useGetLocalStorageToken } from './useGetLocalStorageToken';
+import { Navigator } from '../Navigator';
+import { useCheckToken } from '../useCheckToken';
+import { useGetLocalStorageToken } from '../useGetLocalStorageToken';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const AppLoad = () => {

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Text, Pressable } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { MenuList } from './MenuList';
-import { useGetCategoriesQuery } from '../api/ApiSlice';
-import { selectInitialCategory, selectCategories } from '../screens/CatalogScreen/CatalogSlice';
+import { MenuList } from '../MenuList';
+import { useGetCategoriesQuery } from '../../api/ApiSlice';
+import { selectInitialCategory, selectCategories } from '../../screens/CatalogScreen/CatalogSlice';
 import { useSelector } from 'react-redux';
 
 const Tab = createMaterialTopTabNavigator();

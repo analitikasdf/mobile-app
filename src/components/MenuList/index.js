@@ -3,10 +3,10 @@ import { View, FlatList, StyleSheet, Text, Pressable, Modal } from 'react-native
 import { Image } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 import tw from 'twrnc';
-import { width } from '../api/Kit';
-import { toggleModalProductCard, selectProducts } from '../screens/CatalogScreen/CatalogSlice';
-import { getProduct } from './ProductCard/ProductCardSlice';
-import { MenuCard } from './ProductCard';
+import { width } from '../../api/Kit';
+import { toggleModalProductCard, selectProducts } from '../../screens/CatalogScreen/CatalogSlice';
+import { getProduct } from '../ProductCard/ProductCardSlice';
+import { MenuCard } from '../ProductCard';
 
 const Item = ({ title, price, shortDescription, images }) => (
 	<View style={styles.item}>

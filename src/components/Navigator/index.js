@@ -5,14 +5,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AppLoading from 'expo-app-loading';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAppState } from '../../appSlice';
-import { setIsLoadingApp } from '../../appSlice';
-import { selectProducts, selectCategories } from '../screens/CatalogScreen/CatalogSlice';
+import { selectAppState } from '../../../appSlice';
+import { setIsLoadingApp } from '../../../appSlice';
+import { selectProducts, selectCategories } from '../../screens/CatalogScreen/CatalogSlice';
 
-import { HomeScreen } from '../screens/HomeScreen/HomeScreen';
-import { CatalogScreen } from '../screens/CatalogScreen/CatalogScreen';
-import { UserScreen } from '../screens/UserScreen/UserScreen';
-import { CartScreen } from '../screens/CartScrreen/CartScreen';
+import { HomeScreen } from '../../screens/HomeScreen/HomeScreen';
+import { CatalogScreen } from '../../screens/CatalogScreen/CatalogScreen';
+import { UserScreen } from '../../screens/UserScreen/UserScreen';
+import { CartScreen } from '../../screens/CartScrreen/CartScreen';
 
 const Tab = createBottomTabNavigator();
 

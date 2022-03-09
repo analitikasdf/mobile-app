@@ -3,7 +3,6 @@ import { Modal, Pressable, View, FlatList, Dimensions } from 'react-native';
 import { Text, Button, Image } from 'react-native-elements';
 import tw from 'twrnc';
 import { useSelector, useDispatch } from 'react-redux';
-
 import {
 	selectModalProductList,
 	selectModalProductCard,
@@ -12,33 +11,10 @@ import {
 	selectCategories,
 	initialCategory
 } from './CatalogSlice';
-
-// import {
-// 	toggleModalList,
-// 	selectVisibleList,
-// } from '../../features/modalVisibleList'
-
 import { ProductCard } from '../../components/ProductCard';
-
 import { TabsMenu } from '../../components/TabsMenu';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const image = { uri: 'https://reactjs.org/logo-og.png' };
-
-// const DATA_CATEGORY = [
-// 	{ title: 'Салаты', id: '1' },
-// 	{ title: 'Закуски', id: '2' },
-// 	{ title: 'Супы', id: '3' },
-// 	{ title: 'Блюда на углях', id: '4' },
-// 	{ title: 'Хинкали', id: '5' },
-// 	{ title: 'Соусы', id: '6' },
-// 	{ title: 'Выпечка', id: '7' },
-// 	{ title: 'Гарниры', id: '8' },
-// 	{ title: 'Паста', id: '9' },
-// 	{ title: 'Пицца', id: '10' },
-// 	{ title: 'Горячие блюда', id: '11' },
-// 	{ title: 'Десерты', id: '12' },
-// ]
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
@@ -60,11 +36,12 @@ export const CatalogScreen = () => {
 	const renderItem = ({ item }) => (
 		<View>
 			<Image
-				style={tw.style('m-0.5', 'rounded-2xl', { height: width / 2.1, width: width / 2.1 })}
+				style={tw.style('m-0.5', 'p-2', 'rounded-2xl', 'justify-end', { height: width / 2.1, width: width / 2.1 })}
 				onPress={() => action(item.name)}
 				// source={{ uri: 'https://test.cafekolhida.ru/' + item.image.url }}
-			></Image>
-			<Text style={tw.style('text-center', { fontSize: 22 })}>{item.name}</Text>
+			>
+				<Text style={tw.style('text-center', { fontSize: 22 })}>{item.name}</Text>
+			</Image>
 		</View>
 	);
 

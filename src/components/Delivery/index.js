@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Input, Button } from 'react-native-elements';
 import { useForm, Controller } from 'react-hook-form';
-import { selectCartData } from '../screens/CartScrreen/CartSlice';
+import { selectCartData } from '../../screens/CartScrreen/CartSlice';
 import { useSelector } from 'react-redux';
 
 export const Delivery = () => {

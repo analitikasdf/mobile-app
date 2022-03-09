@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Text, Button } from 'react-native-elements';
+import { Text, Button, useTheme } from 'react-native-elements';
 import { MaskedTextInput } from 'react-native-mask-text';
 import tw from 'twrnc';
 
@@ -10,6 +10,7 @@ export const InputPhone = () => {
 	const dispatch = useDispatch();
 	const phone = useSelector(selectAuthPhone);
 	const ref_input = useRef();
+	const { theme } = useTheme();
 
 	useEffect(() => {
 		ref_input.current.focus();
@@ -28,8 +29,8 @@ export const InputPhone = () => {
 	};
 
 	return (
-		<ThemeProvider theme={theme}>
-			<Text style={tw.style('p-3', 'text-base')}>Ваш телефон</Text>
+		<>
+			<Text style={tw.style('p-3', 'text-base', { color: theme.colors.secondary })}>Ваш телефон</Text>
 			<MaskedTextInput
 				placeholder="+7"
 				keyboardType="phone-pad"
@@ -45,6 +46,7 @@ export const InputPhone = () => {
 			<Button
 				onPress={() => userCheck()}
 				title="ок"
+				disabled={phone.length < 11 ? true : false}
 				buttonStyle={tw.style('p-1', 'text-base', 'text-center')}
 				containerStyle={{
 					width: 200,
@@ -53,6 +55,6 @@ export const InputPhone = () => {
 				}}
 				titleStyle={{ fontWeight: 'bold' }}
 			/>
-		</ThemeProvider>
+		</>
 	);
 };

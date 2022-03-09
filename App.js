@@ -46,7 +46,7 @@ export default function App() {
 	return (
 		<Provider store={store}>
 			<SafeAreaProvider>
-				<View
+				{/* <View
 					style={{
 						flex: 1,
 						alignItems: 'center',
@@ -65,7 +65,7 @@ export default function App() {
 							await sendPushNotification(expoPushToken);
 						}}
 					/>
-				</View>
+				</View> */}
 				<ThemeProvider theme={appTheme}>
 					<AppLoad />
 				</ThemeProvider>
