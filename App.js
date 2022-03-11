@@ -1,14 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, Button, Platform } from 'react-native';
+import { Text, View, Button, Platform, Dimensions, StyleSheet } from 'react-native';
 import { ThemeProvider } from 'react-native-elements';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import store from './src/app/store';
 import { AppLoad } from './src/components/AppLoad';
 import { appTheme } from './src/appTheme';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
+
+import { connectToDevTools } from 'react-devtools-core';
+if (__DEV__) {
+	connectToDevTools({
+		host: 'localhost',
+		port: 8097
+	});
+}
 
 Notifications.setNotificationHandler({
 	handleNotification: async () => ({
@@ -67,7 +76,9 @@ export default function App() {
 					/>
 				</View> */}
 				<ThemeProvider theme={appTheme}>
-					<AppLoad />
+					<GestureHandlerRootView style={{ flex: 1 }}>
+						<AppLoad />
+					</GestureHandlerRootView>
 				</ThemeProvider>
 			</SafeAreaProvider>
 		</Provider>

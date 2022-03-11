@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Pressable, View, FlatList, Dimensions } from 'react-native';
+import { Modal, Pressable, View, FlatList, Dimensions, StyleSheet } from 'react-native';
 import { Text, Button, Image } from 'react-native-elements';
 import tw from 'twrnc';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,10 +15,76 @@ import { ProductCard } from '../../components/ProductCard';
 import { TabsMenu } from '../../components/TabsMenu';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
+import Animated, { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
+
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const BASE_URI = 'https://source.unsplash.com/random?sig=';
+function ModalTabsMenu() {
+	const isPressed = useSharedValue(false);
+	const offset = useSharedValue({ x: 0, y: 10 });
+
+	const animatedStyles = useAnimatedStyle(() => {
+		return {
+			transform: [
+				// { translateX: offset.value.x },
+				{
+					translateY: withSpring(offset.value.y, {
+						damping: 50,
+						stiffness: 90
+					})
+				}
+				// { scale: withSpring(isPressed.value ? 1.2 : 1) },
+			],
+			backgroundColor: isPressed.value ? '#a4f4f4' : '#f4f4f4'
+		};
+	});
+
+	const gesture = Gesture.Pan()
+		.onBegin(() => {
+			'worklet';
+			isPressed.value = true;
+		})
+		.onChange(e => {
+			'worklet';
+			offset.value = {
+				x: e.changeX + offset.value.x,
+				y: e.changeY + offset.value.y
+			};
+		})
+		.onFinalize(() => {
+			'worklet';
+			isPressed.value = false;
+			offset.value = {
+				// x: e.changeX + offset.value.x,
+				y: 10
+			};
+		});
+
+	const hendlerButton = () => {
+		offset.value = {
+			// x: e.changeX + offset.value.x,
+			y: height - 100
+		};
+	};
+
+	return (
+		<GestureDetector gesture={gesture}>
+			<Animated.View style={[tw.style({ height, width }), animatedStyles]}>
+				<Button
+					onPress={() => {
+						hendlerButton();
+					}}
+					title="Close modal2"
+				/>
+
+				<TabsMenu />
+				<Text>111</Text>
+			</Animated.View>
+		</GestureDetector>
+	);
+}
 
 export const CatalogScreen = () => {
 	// console.log(data, 'data')
@@ -31,6 +97,7 @@ export const CatalogScreen = () => {
 	const action = i => {
 		dispatch(toggleModalProductList());
 		dispatch(initialCategory(i));
+		hendlerButton();
 	};
 
 	const renderItem = ({ item }) => (
@@ -47,16 +114,20 @@ export const CatalogScreen = () => {
 
 	return (
 		<SafeAreaView>
-			<FlatList
-				numColumns={2}
-				horizontal={false}
-				contentContainerStyle={{}}
-				columnWrapperStyle={{ justifyContent: 'space-around' }}
-				data={dataCategory}
-				renderItem={renderItem}
-				keyExtractor={item => item.id}
-			></FlatList>
-			<Modal
+			<View style={tw.style({ height: height / 2 })}>
+				<FlatList
+					numColumns={2}
+					horizontal={false}
+					contentContainerStyle={{}}
+					columnWrapperStyle={{ justifyContent: 'space-around' }}
+					data={dataCategory}
+					renderItem={renderItem}
+					keyExtractor={item => item.id}
+				></FlatList>
+			</View>
+
+			<ModalTabsMenu />
+			{/* <Modal
 				animationType="slide"
 				transparent={true}
 				visible={visibleList}
@@ -85,7 +156,15 @@ export const CatalogScreen = () => {
 					<Button title="Назад" buttonStyle={tw`w-30`} onPress={() => dispatch(toggleModalProductCard())} />
 				</Pressable>
 				<ProductCard />
-			</Modal>
+			</Modal> */}
 		</SafeAreaView>
 	);
 };
+
+const styles = StyleSheet.create({
+	modal: {
+		width: '100%',
+		height,
+		backgroundColor: '#f4f4f4'
+	}
+});

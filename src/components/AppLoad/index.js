@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { Navigator } from '../Navigator';
 import { useCheckToken } from '../useCheckToken';
 import { useGetLocalStorageToken } from '../useGetLocalStorageToken';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const AppLoad = () => {
 	console.log('start app load');
