@@ -10,16 +10,16 @@ export const apiSlice = createApi({
 	endpoints: builder => ({
 		// The `getPosts` endpoint is a "query" operation that returns data
 		getProducts: builder.query({
-			// The URL for the request is '/fakeApi/posts'
 			query: () => '/products'
 		}),
 		getCategories: builder.query({
-			// The URL for the request is '/fakeApi/posts'
 			query: () => '/categories'
 		}),
 		getUser: builder.query({
-			// The URL for the request is '/fakeApi/posts'
 			query: phone => `/app-users?phone=${phone}`
+		}),
+		getSliderCategory: builder.query({
+			query: () => '/categories?show_on_slider=true'
 		})
 		// addNewUsersPassword: builder.mutation({
 		// 	query: initialPost => ({
@@ -33,4 +33,4 @@ export const apiSlice = createApi({
 });
 
 // Export the auto-generated hook for the `getPosts` query endpoint
-export const { useGetProductsQuery, useGetCategoriesQuery, useGetUserQuery } = apiSlice;
+export const { useGetProductsQuery, useGetCategoriesQuery, useGetUserQuery, useGetSliderCategoryQuery } = apiSlice;
