@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { width } from '../../api/Kit';
 
-export const SlidersHomeScreen = () => {
+export const SliderCategory = () => {
 	const navigation = useNavigation();
 	const dispatch = useDispatch();
 	const category = useSelector(selectCategories);
@@ -27,42 +27,6 @@ export const SlidersHomeScreen = () => {
 		dispatch(initialCategory(i));
 		console.log(i);
 	};
-
-	const arr = [
-		// {
-		// 	id: '1',
-		// 	header: 'Акции',
-		// 	slides: sliderCategory
-		// }
-		// {
-		// 	id: '2',
-		// 	header: 'Акции',
-		// 	slides: [
-		// 		{ id: '13', name: 'name1', img: '' },
-		// 		{ id: '23', name: 'name2', img: '' },
-		// 		{ id: '33', name: 'name3', img: '' }
-		// 	]
-		// },
-		// {
-		// 	id: '3',
-		// 	header: 'Акции',
-		// 	slides: [
-		// 		{ id: '12', name: 'name1', img: '' },
-		// 		{ id: '22', name: 'name2', img: '' },
-		// 		{ id: '32', name: 'name3', img: '' }
-		// 	]
-		// },
-		// {
-		// 	id: '4',
-		// 	header: 'Акции',
-		// 	slides: [
-		// 		{ id: '11', name: 'name1111', img: '', link: 'выпечка' },
-		// 		{ id: '21', name: 'name22', img: '' },
-		// 		{ id: '31', name: 'name3', img: '' }
-		// 	]
-		// }
-	];
-	console.log(arr);
 
 	const ItemSlider = ({ header, slides }) => {
 		return (
@@ -117,7 +81,8 @@ export const SlidersHomeScreen = () => {
 
 	return (
 		<View style={tw.style('mb-10', 'flex-1')}>
-			<ItemSlider slides={sliderCategory} />
+			<ItemSlider header={'Заголовок'} slides={sliderCategory} />
+			{/* <ItemSlider header={'Заголовок'} slides={sliderCategory} /> */}
 		</View>
 	);
 	// return null;
