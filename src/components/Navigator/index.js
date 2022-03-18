@@ -81,7 +81,7 @@ export const Navigator = () => {
 						headerTintColor: 'aqua'
 					}}
 				/>
-				<Tab.Screen
+				{/* <Tab.Screen
 					name="Catalog"
 					component={CatalogScreen}
 					options={{
@@ -128,7 +128,7 @@ export const Navigator = () => {
 						},
 						headerTintColor: 'aqua'
 					}}
-				/>
+				/> */}
 			</Tab.Navigator>
 		</NavigationContainer>
 	);

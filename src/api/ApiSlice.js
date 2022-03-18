@@ -10,7 +10,7 @@ export const apiSlice = createApi({
 	endpoints: builder => ({
 		// The `getPosts` endpoint is a "query" operation that returns data
 		getProducts: builder.query({
-			query: () => '/products'
+			query: () => '/products?_limit=10000'
 		}),
 		getCategories: builder.query({
 			query: () => '/categories'
