@@ -1,20 +1,20 @@
 import React from 'react';
 import { getProducts, getCategories } from '../../screens/CatalogScreen/CatalogSlice';
-import { getSliderCategory } from '../../screens/HomeScreen/HomeScreenSlice';
+import { setSliderProducts } from '../../screens/HomeScreen/HomeScreenSlice';
 import { useDispatch } from 'react-redux';
 import { Navigator } from '../Navigator';
 import { useCheckToken } from '../useCheckToken';
 import { useGetLocalStorageToken } from '../useGetLocalStorageToken';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useGetSliderCategoryQuery } from '../../api/ApiSlice';
+import { useGetSliderProductsQuery } from '../../api/ApiSlice';
 
 export const AppLoad = () => {
 	console.log('start app load');
 	const dispatch = useDispatch();
-	const { data: posts } = useGetSliderCategoryQuery();
+	const { data: posts } = useGetSliderProductsQuery();
 
 	const loadSliderCategory = () => {
-		dispatch(getSliderCategory(posts));
+		dispatch(setSliderProducts(posts));
 	};
 
 	const loadProducts = async () => {

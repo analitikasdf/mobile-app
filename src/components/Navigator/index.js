@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectAppState } from '../../../appSlice';
 import { setIsLoadingApp } from '../../../appSlice';
 import { selectProducts, selectCategories } from '../../screens/CatalogScreen/CatalogSlice';
+import { selectSliderProducts } from '../../screens/HomeScreen/HomeScreenSlice';
 
 import { HomeScreen } from '../../screens/HomeScreen/HomeScreen';
 import { CatalogScreen } from '../../screens/CatalogScreen/CatalogScreen';
@@ -23,6 +24,7 @@ export const Navigator = () => {
 	// const dispatch = useDispatch();
 	const products = useSelector(selectProducts);
 	const categories = useSelector(selectCategories);
+	// const slidesProducts = useSelector(selectSliderProducts);
 
 	// if (products.length > 0 && categories.length > 0) {
 	// 	dispatch(setIsLoadingApp(false));

@@ -3,17 +3,17 @@ import { createSlice } from '@reduxjs/toolkit';
 export const homeScreenState = createSlice({
 	name: 'homeScreenState',
 	initialState: {
-		slidesCategory: []
+		slidesProducts: []
 	},
 	reducers: {
-		getSliderCategory: (state, action) => {
-			state.slidesCategory = action.payload;
+		setSliderProducts: (state, action) => {
+			state.slidesProducts = action.payload;
 		}
 	}
 });
 
-export const { getSliderCategory } = homeScreenState.actions;
+export const { setSliderProducts } = homeScreenState.actions;
 
-export const selectSliderCategory = state => state.homeScreenState.slidesCategory;
+export const selectSliderProducts = state => state.homeScreenState.slidesProducts;
 
 export default homeScreenState.reducer;

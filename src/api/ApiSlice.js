@@ -20,7 +20,11 @@ export const apiSlice = createApi({
 		}),
 		getSliderCategory: builder.query({
 			query: () => '/categories?show_on_slider=true'
+		}),
+		getSliderProducts: builder.query({
+			query: () => '/sliders'
 		})
+
 		// addNewUsersPassword: builder.mutation({
 		// 	query: initialPost => ({
 		// 	  url: '/posts',
@@ -33,4 +37,10 @@ export const apiSlice = createApi({
 });
 
 // Export the auto-generated hook for the `getPosts` query endpoint
-export const { useGetProductsQuery, useGetCategoriesQuery, useGetUserQuery, useGetSliderCategoryQuery } = apiSlice;
+export const {
+	useGetProductsQuery,
+	useGetCategoriesQuery,
+	useGetUserQuery,
+	useGetSliderCategoryQuery,
+	useGetSliderProductsQuery
+} = apiSlice;
